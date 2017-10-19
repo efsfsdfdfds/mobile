@@ -1,0 +1,32 @@
+{extend name='base/base'}
+{block name='content'}
+<div class="container" style="margin-top:40px;">
+	<form action="inserts" method="post">
+	  <h3 style="font-family: 华文新魏;">添加数据</h3><span>(注意一次只能添加五条信息,必须逐行对应正确)</span>
+	  <table class="table table-bordered">
+	  	<tr align="center">
+	  		<td class="danger">姓名</td>
+			<td class="warning">手机号</td>
+			<td class="success">QQ</td>
+			<td class="active">所在城市</td>
+			
+	  	</tr>
+	  	<tr align="center" style="background:#cccccc">
+	  		<td><textarea placeholder="请输入五条姓名信息，以空格或换行为分隔符。" name="name" id="" cols="30" rows="10" style="resize: none;margin-top:18px"></textarea></td>
+	  		<td><textarea placeholder="请输入五条手机号码信息，以空格或换行为分隔符。" name="phoneNumber" id="" cols="30" rows="10" style="resize: none;margin-top:18px"></textarea></td>
+	  		<td><textarea placeholder="请输入五条QQ号码信息，以空格或换行为分隔符。" name="QQ" id="" cols="30" rows="10" style="resize: none;margin-top:18px"></textarea></td>
+	  		<td>
+	  			<input type="text" class="form-control" placeholder="请输入门店名称" style="margin:45% auto" list="pasta" name="city">
+	  			<datalist id="pasta">
+					{foreach $arr2 as $vvv}
+					   <option>{$vvv['city']}</option>
+					{/foreach}
+				</datalist>
+	  		</td>
+	  		
+	  	</tr>
+	  </table>
+	  <button type="submit" class="btn btn-default" style="width:100px">添加</button>
+	</form>
+</div>
+{/block}

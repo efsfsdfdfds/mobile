@@ -1,0 +1,10 @@
+{extend name='base/base'}
+{block name='content'}
+<div class="container" style="margin-top:40px;">
+	<form action="impexcel" method="post"  enctype="multipart/form-data">
+		<input type="file" name="import" class="btn btn-default" style="width:400px;">
+		<div style="height: 30px;"></div>
+		<button type="sumit" class="btn btn-info" style="width:100px;">导入</button>
+	</form>
+</div>
+{/block}

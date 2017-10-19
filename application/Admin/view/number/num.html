@@ -1,0 +1,152 @@
+{extend name='base/base'}
+{block name='content'}
+<div class="container" style="text-align: center;margin-top:40px">
+    <h2 style="font-family:华文新魏;">输入数据进行查询</h2>
+	<form action="num" onsubmit="return sss()" method="post">
+		<textarea placeholder="请输入手机号码(每组手机号为11位,最多输入十组,用空格隔开,不能有符号出现)" name="content" id="txt"  cols="70" rows="10" style="resize: none;display:block;margin:0 auto;border-radius: 10px;">
+			
+
+		</textarea>
+		<div style="height:40px;"></div>
+		<button type="submit" class="btn btn-default" style="width:200px;margin:0 auto;">点击查询</button>
+	</form>
+</div>
+{if isset($arr)}
+<div class="container">
+	<table align="center" class="table table-bordered" >
+		<caption align="center"><h3 style="color:#000;font-family:华文新魏">不可用号码表</h3></caption>
+		<tr align="center" style="font-weight: bold;">
+			<td>编号</td>
+			<td>姓名</td>
+			<td>手机号</td>
+			<td>QQ</td>
+			<td>所在城市</td>
+			<td>备注信息</td>
+		</tr>
+		{foreach $arr as $vv2}
+		{foreach $vv2 as $vv1}
+		<tr align="center">
+			<td class="active">{$vv1['id']}</td>
+			<td class="warning">{$vv1['userName']}</td>
+			<td class="success">{$vv1['phoneNumber']}</td>
+			<td class="danger">{$vv1['QQ']}</td>
+			<td class="info">{$vv1['city']}</td>
+			<td class="warning">{$vv1['comment']}</td>
+		</tr>
+		{/foreach}
+		{/foreach}
+	</table>
+</div>
+{/if}
+{if isset($arr1)}
+<div class="container">
+	<form id="form" action="" method="">
+		<table class="table table-bordered">
+			<caption align="center"><h3 style="color:#000;font-family:华文新魏">可用号码表</h3></caption>
+			<tr align="center" style="font-weight:bold;">
+				<td>号码</td>
+			</tr>
+			<tr align="center">
+				<td class="info" style="font-size:28px;">
+			{foreach $arr1 as $vv}
+		    
+			 <input type="hidden" name="num[]" id="number" value="{$vv}">{$vv}<br>
+			
+		    {/foreach}
+		        </td>
+		    </tr>
+		</table>
+		<div class="container">
+			<input type="text" class="form-control" placeholder="请输入门店名称" style="width:1010px;float:left;text-align: center;margin-right: 10px;" list="pasta" id="sto" name="store"><input type="button" onclick="ajs()" class="btn btn-default" value="门店查询">
+			<datalist id="pasta">
+				{foreach $arr2 as $vvv}
+				   <option>{$vvv['city']}</option>
+				{/foreach}
+			</datalist>
+			
+			
+		</div>
+		
+
+    </form>
+	
+</div>
+<div class="container">
+	<table class="table table-bordered">
+		<caption align="center"><h3 style="color:#000;font-family:华文新魏">店铺查询可用与不可用号码表</h3></caption>
+		<tr align="center" style="font-weight:bold;">
+			<td width="50%">本店可用号码</td>
+			<td width="50%">本店不可用号码</td>
+		</tr>
+		<tr>
+			<td class="success" id="vke" style="text-align: center"></td>
+			<td class="info" id="vbu" style="text-align: center"></td>
+		</tr>
+	</table>
+</div>
+{/if}
+<div class="container" style="height: 80px;">
+	
+</div>
+{/block}
+{block name='js'}
+    <script>
+    	function sss()
+    	{
+    		document.getElementById('txt').value=document.getElementById('txt').value.replace(/\s/gi,'');
+    		var re = /^[0-9]+.?[0-9]*$/; 
+    		if(document.getElementById('txt').value.length!=0)
+    		{
+    			if(document.getElementById('txt').value.length<111 && document.getElementById('txt').value.length%11==0)
+	    		{
+	    			if(!re.test(document.getElementById('txt').value))
+	    			{
+	    				alert('输入手机号必须是数字');
+	    				txt.select();
+	    				return false;
+	    			}
+	    			else
+	    			{
+
+	    				return true;
+	    			}
+	    			
+	    		}
+	    		else{
+	    			alert('输入格式错误！每组手机号为11位,最多输入十组');
+	    			txt.select();
+
+	    			return false;
+	    		}
+    		}
+    		else{
+    			alert('输入数据不能为空！');
+    			txt.select();
+    			return false;
+    		}
+    	}
+    	
+    	function ajs()
+    	{ 
+    		$.ajax({
+                type:'post',
+                url:'city',
+                data:$('#form').serialize(),
+                success:function(data)
+                {
+                    var datas=JSON.parse(data);
+                    //alert(datas.vke);
+                    var vke=datas.vke;
+                    var vbu=datas.vbu;
+                    $('#vke').html(vke);
+                    $('#vbu').html(vbu);
+                    
+                },
+                beforeSend:function()
+                {
+                    
+                }
+    	    });
+    	}
+    </script>
+{/block}

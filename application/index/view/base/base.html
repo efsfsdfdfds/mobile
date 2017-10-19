@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/base.css">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/style.css">
+  {block name='style'}{/block}
+	<script type="text/javascript" src="__STATIC__/js/jquery-3.2.1.js" ></script>
+	<script type="text/javascript" src="__STATIC__/js/bootstrap.js" ></script>
+	<script type="text/javascript" src="__STATIC__/js/fileshow.js" ></script><script type="text/javascript" src="__STATIC__/js/validate.js" ></script>
+	<style>
+	  *{
+	  	margin:0;
+	  	padding:0;
+	  }
+      ul{
+      	list-style: none;
+      }
+      .shadow {
+                text-align: center;
+                /* 背景颜色线性渐变 */
+                    /* 老式写法 */
+                        /* linear为线性渐变，也可以用下面的那种写法。left top，right top指的是渐变方向，左上到右上 */
+                        /* color-stop函数，第一个表示渐变的位置，0为起点，0.5为中点，1为结束点；第二个表示该点的颜色。所以本次渐变为两边灰色，中间渐白色 */
+                background: -webkit-gradient(linear, left top, right top, color-stop(0, deeppink), color-stop(.4, deeppink), color-stop(.5, white), color-stop(.6, #4d4d4d), color-stop(1, #4d4d4d));
+                    /* 新式写法 */
+                /* background: -webkit-linear-gradient(left top, right top, color-stop(0, #4d4d4d), color-stop(.4, #4d4d4d), color-stop(.5, white), color-stop(.6, #4d4d4d), color-stop(1, #4d4d4d)); */
+ 
+                /* 设置为text，意思是把文本内容之外的背景给裁剪掉 */
+                -webkit-background-clip: text;
+                /* 设置对象中的文字填充颜色 这里设置为透明 */
+			-webkit-text-fill-color: transparent;
+	
+                /* 每隔2秒调用下面的CSS3动画 infinite属性为循环执行animate */
+                -webkit-animation: animate 1.5s infinite;
+            }
+            /* 兼容写法，要放在@keyframes前面 */
+           @-webkit-keyframes animate {
+               背景从-100px的水平位置，移动到+100px的水平位置。如果要移动Y轴的，设置第二个数值
+               from {background-position: -100px;}
+               to {background-position: 100px;}
+           }
+           @keyframes animate {
+               from {background-position: -100px;}
+               to {background-position: 100px;}
+           }
+	</style>
+	<script src="__STATIC__/js/index.js"></script>
+</head>
+<body>
+<div class="container header" style='margin-top:50px;'>
+	<ul class="nav nav-pills">
+	  <li role="presentation" class="active"><a href="">后台首页</a></li>
+	  <li role="presentation"><a href="#">前台首页</a></li>
+	  <li role="presentation"><a href=""></a></li>
+	</ul> 
+</div>
+
+<div class="container" style='margin-top:80px;'>
+	 <div class="row">
+	 	  <div class="col-md-2" style='border:1px #CCCCCC solid'>
+              <ul id="accordion" class="accordion list-group">
+				<li>
+					<div class="link"><i class="fa fa-paint-brush"></i>号码查询<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu list-group">
+						<li><a href="#">可用号码查询</a></li>
+						<li><a href="#">城市号码查询</a></li>
+						<li><a href="#">QQ号码查询</a></li>
+						<li><a href="#">回收站</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="link"><i class="fa fa-code"></i>会员管理<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu list-group">
+						<li><a href="#">Javascript</a></li>
+						<li><a href="#">jQuery</a></li>
+						<li><a href="#">Frameworks javascript</a></li>
+					</ul>
+				</li>
+				<li>
+					<div class="link"><i class="fa fa-mobile"></i>订单管理<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu list-group">
+						<li><a href="#">Tablets</a></li>
+						<li><a href="#">Dispositivos mobiles</a></li>
+						<li><a href="#">Medios de escritorio</a></li>
+						<li><a href="#">Otros dispositivos</a></li>
+					</ul>
+				</li>
+				<li><div class="link"><i class="fa fa-globe"></i>权限管理<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu list-group">
+						<li><a href="#">添加节点</a></li>
+						<li><a href="#">添加角色</a></li>
+						<li><a href="#">给会员分配角色</a></li>
+						<li><a href="#">Otros buscadores</a></li>
+					</ul>
+				</li>
+				<li><div class="link"><i class="fa fa-globe"></i>系统设置<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu list-group">
+						<li><a href="#">Google</a></li>
+						<li><a href="#">Bing</a></li>
+						<li><a href="#">Yahoo</a></li>
+						<li><a href="#">Otros buscadores</a></li>
+					</ul>
+				</li>
+				<li><div class="link"><i class="fa fa-globe"></i>夕阳西下<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu list-group">
+						<li><a href="#">Google</a></li>
+						<li><a href="#">Bing</a></li>
+						<li><a href="#">Yahoo</a></li>
+						<li><a href="#">Otros buscadores</a></li>
+					</ul>
+				</li>
+				<li><div class="link"><i class="fa fa-globe"></i>古道人家<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu list-group">
+						<li><a href="#">Google</a></li>
+						<li><a href="#">Bing</a></li>
+						<li><a href="#">Yahoo</a></li>
+						<li><a href="#">Otros buscadores</a></li>
+					</ul>
+				</li>
+				<li><div class="link"><i class="fa fa-globe"></i>西风瘦马<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu list-group">
+						<li><a href="#">Google</a></li>
+						<li><a href="#">Bing</a></li>
+						<li><a href="#">Yahoo</a></li>
+						<li><a href="#">Otros buscadores</a></li>
+					</ul>
+				</li>
+				<li><div class="link"><i class="fa fa-globe"></i>人在天涯<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu list-group">
+						<li><a href="#">Google</a></li>
+						<li><a href="#">Bing</a></li>
+						<li><a href="#">Yahoo</a></li>
+						<li><a href="#">Otros buscadores</a></li>
+					</ul>
+				</li>
+				<li><div class="link"><i class="fa fa-globe"></i>断肠之人<i class="fa fa-chevron-down"></i></div>
+					<ul class="submenu list-group">
+						<li><a href="#">Google</a></li>
+						<li><a href="#">Bing</a></li>
+						<li><a href="#">Yahoo</a></li>
+						<li><a href="#">Otros buscadores</a></li>
+					</ul>
+				</li>
+			</ul>
+
+	 	  </div> 
+	 	  <!-- <div class="col-md-1" style='width:1px;'></div> -->
+	 	  <div class="col-md-10">
+	 	      {block name='content'}{/block}
+	 	  </div> 
+	 </div>
+	
+</div>
+
+
+<div class="container footer">
+	 <div class="row">
+	 	  <div class="col-md-12"></div> 
+	 </div>
+	
+</div>
+{block name='js'}
+
+{/block}
+
+</body>
+</html>
+
