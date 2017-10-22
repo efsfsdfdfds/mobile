@@ -10,7 +10,13 @@ class Qq
 		{
 			$datas=$request->param();
 			$string=trim($datas['content']);
+			if($string=="")
+			{
+				echo "<script>alert('输入数据不能为空！');window.location.assign('qq')</script>";
+				return;
+			}
 			$data=explode("\r\n",$string);
+			
 			$arr=[];
 			$arr1=[];
 			foreach($data as $vv)

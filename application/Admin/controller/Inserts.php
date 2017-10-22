@@ -11,6 +11,7 @@ class Inserts
 		{
 			$datas=$request->param();
 			var_dump($datas);
+      //die;
 			$time=date('Y-m-d');
             $names=trim($datas['name']);
             $phoneNumbers=trim($datas['phoneNumber']);
@@ -20,14 +21,14 @@ class Inserts
             $phoneNumber=explode("\r\n",$phoneNumbers);
             $QQ=explode("\r\n",$QQs);
             $arr=Db::table('Store')->where(['city'=>$city])->select();
-            $user=new Irt();
-            $list=[
-                   ['userName'=>$name[0],'phoneNumber'=>$phoneNumber[0],'QQ'=>$QQ[0],'cid'=>$arr[0]['cid'],'comment'=>$time.'使用'],
-                   ['userName'=>$name[1],'phoneNumber'=>$phoneNumber[1],'QQ'=>$QQ[1],'cid'=>$arr[0]['cid'],'comment'=>$time.'使用'],
-                   ['userName'=>$name[2],'phoneNumber'=>$phoneNumber[2],'QQ'=>$QQ[2],'cid'=>$arr[0]['cid'],'comment'=>$time.'使用'],
-                   ['userName'=>$name[3],'phoneNumber'=>$phoneNumber[3],'QQ'=>$QQ[3],'cid'=>$arr[0]['cid'],'comment'=>$time.'使用'],
-                   ['userName'=>$name[4],'phoneNumber'=>$phoneNumber[4],'QQ'=>$QQ[4],'cid'=>$arr[0]['cid'],'comment'=>$time.'使用']
-                   ];
+            $list=[];
+            //$count=strlen($name);
+            for($i=0;$i<count($name);$i++)
+            {
+              $user=new Irt();
+              $list[]=['userName'=>$name[$i],'phoneNumber'=>$phoneNumber[$i],'QQ'=>$QQ[$i],'cid'=>$arr[0]['cid'],'comment'=>$time.'使用'];
+              
+            }
             $bool=$user->saveAll($list);
             if($bool)
             {

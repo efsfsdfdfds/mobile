@@ -1,7 +1,7 @@
 {extend name='base/base'}
 {block name='content'}
 <div class="container" style="text-align: center;margin-top:40px">
-    <h2 style="font-family:华文新魏;">输入数据进行查询</h2>
+    <h2 style="font-family:华文新魏;">输入手机号码进行查询</h2>
 	<form action="num" onsubmit="return sss()" method="post">
 		<textarea placeholder="请输入手机号码(每组手机号为11位,最多输入十组,用空格隔开,不能有符号出现)" name="content" id="txt"  cols="70" rows="10" style="resize: none;display:block;margin:0 auto;border-radius: 10px;">
 			
@@ -11,33 +11,6 @@
 		<button type="submit" class="btn btn-default" style="width:200px;margin:0 auto;">点击查询</button>
 	</form>
 </div>
-{if isset($arr)}
-<div class="container">
-	<table align="center" class="table table-bordered" >
-		<caption align="center"><h3 style="color:#000;font-family:华文新魏">不可用号码表</h3></caption>
-		<tr align="center" style="font-weight: bold;">
-			<td>编号</td>
-			<td>姓名</td>
-			<td>手机号</td>
-			<td>QQ</td>
-			<td>所在城市</td>
-			<td>备注信息</td>
-		</tr>
-		{foreach $arr as $vv2}
-		{foreach $vv2 as $vv1}
-		<tr align="center">
-			<td class="active">{$vv1['id']}</td>
-			<td class="warning">{$vv1['userName']}</td>
-			<td class="success">{$vv1['phoneNumber']}</td>
-			<td class="danger">{$vv1['QQ']}</td>
-			<td class="info">{$vv1['city']}</td>
-			<td class="warning">{$vv1['comment']}</td>
-		</tr>
-		{/foreach}
-		{/foreach}
-	</table>
-</div>
-{/if}
 {if isset($arr1)}
 <div class="container">
 	<form id="form" action="" method="">
@@ -85,6 +58,34 @@
 	</table>
 </div>
 {/if}
+{if isset($arr)}
+<div class="container">
+	<table align="center" class="table table-bordered" >
+		<caption align="center"><h3 style="color:#000;font-family:华文新魏">不可用号码表</h3></caption>
+		<tr align="center" style="font-weight: bold;">
+			<td>编号</td>
+			<td>姓名</td>
+			<td>手机号</td>
+			<td>QQ</td>
+			<td>所在城市</td>
+			<td>备注信息</td>
+		</tr>
+		{foreach $arr as $vv2}
+		{foreach $vv2 as $vv1}
+		<tr align="center">
+			<td class="active">{$vv1['id']}</td>
+			<td class="warning">{$vv1['userName']}</td>
+			<td class="success">{$vv1['phoneNumber']}</td>
+			<td class="danger">{$vv1['QQ']}</td>
+			<td class="info">{$vv1['city']}</td>
+			<td class="warning">{$vv1['comment']}</td>
+		</tr>
+		{/foreach}
+		{/foreach}
+	</table>
+</div>
+{/if}
+
 <div class="container" style="height: 80px;">
 	
 </div>
